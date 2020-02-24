@@ -5,10 +5,11 @@
 :root {
   --color-background: #1e222b;
   --color-background-header: #181c25;
-  --color-font-menu: #686e7a;
+  --color-font-menu: #59616c;
   --color-font-highlighted: #fdfdfd;
   --color-menu-mainmenu: #6a7a89;
-  --color-menu-active: #616a7b;
+  --color-font-topmenu: #9c9ca5;
+  --color-menu-active: #54606e;
   --color-lines: rgba(97, 106, 123, 0.3);
   --color-xp-bar: #0d0e10;
   --color-progress-bar: #a97a5e;
@@ -19,7 +20,15 @@
   --border-pill-shape: 20px;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  display: grid;
+  min-height: 100%;
+  grid-template-rows: 10em 1fr minmax(7em, auto);
+
   background: var(--color-background);
 
   font-family: var(--font-nav);
@@ -32,7 +41,7 @@ header {
 
   height: 2em;
   padding: 1em 4em;
-  margin-bottom: 5em;
+  // margin-bottom: 5em;
 
   background: var(--color-background-header);
   color: var(--color-font-menu);
@@ -41,7 +50,6 @@ header {
   text-transform: uppercase;
 
   nav {
-    display: flex;
     align-self: flex-end;
     min-width: 930px;
 
@@ -58,16 +66,16 @@ header {
 
     a.active {
       position: relative;
-      color: #babac7;
+      color: var(--color-font-topmenu);
     }
 
     a.active::before {
       position: absolute;
-      top: 32px;
+      top: 31px;
       left: 38px;
 
       width: 50px;
-      height: 5px;
+      height: 4px;
 
       content: "";
 
@@ -75,26 +83,26 @@ header {
       border-radius: 4px;
     }
 
-    .controller-btn {
+    .keyboard-key {
       display: inline-block;
       height: 1em;
 
-      padding: 0.1em 0.7em;
+      padding: 0.4em 0.7em 0.3em 0.7em;
 
       background: var(--color-font-menu);
       color: var(--color-background-header);
 
       font-size: 0.6em;
 
-      border-radius: 6px 6px 2px 2px;
-    }
+      border-radius: 3px 2px;
 
-    .controller-btn.lb {
-      margin-right: 1.7em;
-    }
+      &.go-left {
+        margin-right: 2em;
+      }
 
-    .controller-btn.rb {
-      margin-left: 1.7em;
+      &.go-right {
+        margin-left: 2em;
+      }
     }
   }
 
@@ -176,11 +184,25 @@ header {
 
 .left-main-container {
   /* left and main container */
+  position: relative;
   display: grid;
   grid-template-columns: minmax(250px, 20%) minmax(800px, 1fr);
   grid-template-areas: "menu main";
 
+  mix-blend-mode: hard-light;
+
   padding: 0 15em 0 1.8em;
+
+  &:after {
+    /* make gradient "fade-out" look at bottom of page - make sure footer has a higher z-index to not get hidden by the gradient */
+    position: absolute;
+    content: "";
+    left: 0px;
+    bottom: 0px;
+    height: 10em;
+    width: 100%;
+    background: linear-gradient(transparent, var(--color-xp-bar));
+  }
 }
 
 /* side-menu */
@@ -210,20 +232,21 @@ nav.side-menu {
 
     .active {
       /* the active menu item (pill-shape). Also added background-image for slight distortion of the background */
-      background: var(--color-menu-active);
+      background: var(--color-menu-mainmenu);
       background-image: url(data:image/png;base64,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);
-      background-blend-mode: soft-light;
+      background-blend-mode: screen;
       color: var(--color-background-header);
 
       border-radius: var(--border-pill-shape);
 
-      box-shadow: 0px 0px 5px 2px var(--color-lines);
+      box-shadow: 0px 0px 6px 10px rgba(29, 35, 59, 0.5);
     }
   }
 }
 
 main {
   grid-area: main;
+  position: relative;
 
   margin-top: 1.2em;
 
@@ -423,40 +446,95 @@ main {
           width: 180px;
           position: relative;
           color: var(--color-font-highlighted);
-        }
 
-        .difficulty-progress-bar::before {
-          /* progress-bar-empty (black)*/
-          position: absolute;
-          top: -5px;
-          right: 0px;
-          content: "";
+          &::before {
+            /* progress-bar-empty (black)*/
+            position: absolute;
+            top: -5px;
+            right: 0px;
+            content: "";
 
-          width: 170px;
-          height: 10px;
+            width: 170px;
+            height: 10px;
 
-          background-color: var(--color-xp-bar);
+            background-color: var(--color-xp-bar);
 
-          border-radius: 10px;
-        }
+            border-radius: 10px;
+          }
 
-        .difficulty-progress-bar::after {
-          /* progress-bar-fill */
-          position: absolute;
-          top: -3px;
-          left: 12px;
-          content: "";
+          &::after {
+            /* progress-bar-fill */
+            position: absolute;
+            top: -3px;
+            left: 12px;
+            content: "";
 
-          width: 80px;
-          height: 6px;
+            width: 0px;
+            height: 6px;
 
-          background-color: var(--color-progress-bar);
+            background-color: var(--color-progress-bar);
 
-          font-size: 0.7em;
-          color: var(--color-font-menu);
-          border-radius: 10px 0 0 10px;
+            font-size: 0.7em;
+            color: var(--color-font-menu);
+            border-radius: 10px 0 0 10px;
+          }
         }
       }
+
+      /* choose length of each difficulty bar */
+      .single-difficulty:nth-child(1) .difficulty-progress-bar::after {
+        width: 20px;
+      }
+
+      .single-difficulty:nth-child(2) .difficulty-progress-bar::after {
+        width: 166px;
+        border-radius: 10px;
+      }
+
+      .single-difficulty:nth-child(3) .difficulty-progress-bar::after {
+        width: 166px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+footer {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  z-index: 2;
+
+  // margin-top: ;
+  padding: 4em 6em;
+
+  font-size: 0.7em;
+  font-weight: 600;
+
+  background: var(--color-xp-bar);
+
+  .footer-action {
+    display: inline;
+    margin-left: 3em;
+    .key {
+      display: inline;
+      background: var(--color-font-menu);
+
+      padding: 5px 4px 3px 4px;
+      margin-right: 7px;
+
+      text-transform: uppercase;
+
+      border-radius: 3px 2px;
+    }
+
+    .option {
+      display: inline;
+
+      font-size: 1.3em;
+      color: var(--color-font-menu);
     }
   }
 }
