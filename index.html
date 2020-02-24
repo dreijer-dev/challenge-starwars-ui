@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS challenge #01 - Star Wars: Fallen Order UI</title>
+    <link rel="stylesheet" href="main.css" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+      rel="stylesheet"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- top bar navigation -->
+    <header>
+      <nav>
+        <div class="controller-btn lb">LB</div>
+        <a href="#">Abilities</a>
+        <a href="#">Customization</a>
+        <a href="#">Databank</a>
+        <a href="#">Tactical Guide</a>
+        <a href="#" class="active">Settings</a>
+        <div class="controller-btn rb">RB</div>
+      </nav>
+
+      <!-- xp bar (upper right corner)-->
+      <div class="progress-bar">
+        9
+        <div class="progress-bar-deco"></div>
+      </div>
+    </header>
+
+    <!-- left side navigation (settings)-->
+    <div class="left-main-container">
+      <nav class="side-menu">
+        <ul>
+          <li><a href="#">Controls</a></li>
+          <li class="active"><a href="#">Gameplay</a></li>
+          <li><a href="#">Visuals</a></li>
+          <li><a href="#">Video</a></li>
+          <li><a href="#">Audio</a></li>
+          <li><a href="#">Extras</a></li>
+          <li><a href="#">Quit</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <div class="single-setting">
+          <div class="setting-label active">Difficulty</div>
+          <div class="line"></div>
+          <div class="setting-value selector active">
+            <span class="arrow-left"></span
+            ><span class="value-text">Jedi Grand Master</span
+            ><span class="arrow-right"></span>
+          </div>
+        </div>
+
+        <div class="setting-information">
+          <div class="setting-information-label">
+            Players who want an intense and demanding combat experience
+          </div>
+          <div class="setting-information-difficulty">
+            <div class="single-difficulty">
+              <div class="difficulty-label">Parry timing</div>
+              <div class="difficulty-progress-bar"></div>
+            </div>
+            <div class="single-difficulty">
+              <div class="difficulty-label">Incoming damage</div>
+              <div class="difficulty-progress-bar"></div>
+            </div>
+            <div class="single-difficulty">
+              <div class="difficulty-label">Enemy aggression</div>
+              <div class="difficulty-progress-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="single-setting">
+          <div class="setting-label">
+            Auto switch target on enemy death
+          </div>
+          <div class="line"></div>
+          <div class="setting-value selector">
+            <span class="arrow-left"></span
+            ><span class="value-text">Visible Enemies Only</span
+            ><span class="arrow-right"></span>
+          </div>
+        </div>
+
+        <div class="single-setting">
+          <div class="setting-label">
+            Auto lock target in combat
+          </div>
+          <div class="line"></div>
+          <div class="setting-value toggle-off"></div>
+        </div>
+
+        <div class="single-setting">
+          <div class="setting-label">
+            Subtitles
+          </div>
+          <div class="line"></div>
+          <div class="setting-value toggle-on"></div>
+        </div>
+
+        <div class="single-setting">
+          <div class="setting-label">Subtitle scale</div>
+          <div class="line"></div>
+          <div class="setting-value selector ">
+            <span class="arrow-left"></span><span class="value-text">3</span
+            ><span class="arrow-right"></span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

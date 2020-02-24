@@ -1,0 +1,181 @@
+@use 'partials/reset';
+
+:root {
+  --color-background: #1e222b;
+  --color-background-header: #181c25;
+  --color-font-menu: #686e7a;
+  --color-font-highlighted: #fdfdfd;
+  --color-xp-bar: #0d0e10;
+  --color-progress-bar: #a97a5e;
+
+  --font-nav: "Raleway", sans-serif;
+  --font-weight-nav: 600;
+}
+
+body {
+  background: var(--color-background);
+
+  font-family: var(--font-nav);
+  font-size: 1.2em;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+
+  height: 2em;
+  padding: 1em 2em;
+  margin-bottom: 5em;
+
+  background: var(--color-background-header);
+  color: var(--color-font-menu);
+
+  font-weight: var(--font-weight-nav);
+  text-transform: uppercase;
+
+  nav {
+    display: flex;
+    align-self: flex-end;
+
+    a {
+      padding: 0 1.4em;
+
+      font-size: 0.82em;
+      letter-spacing: 1px;
+    }
+
+    a.active {
+      color: #babac7;
+    }
+
+    .controller-btn {
+      display: inline-block;
+      height: 1.1em;
+
+      margin-top: 0.4em;
+      padding: 0.1em 0.7em;
+
+      background: var(--color-font-menu);
+      color: var(--color-background-header);
+
+      font-size: 0.5em;
+
+      border-radius: 6px 6px 2px 2px;
+    }
+
+    .controller-btn.lb {
+      margin-right: 1.7em;
+    }
+
+    .controller-btn.rb {
+      margin-left: 1.7em;
+    }
+  }
+
+  .xp-widget {
+    align-self: flex-end;
+
+    padding-bottom: 2px; /* needed to align with rest of menu (line-height) */
+    position: relative;
+
+    font-size: 0.9em;
+    color: var(--color-font-highlighted);
+    margin-right: 16em;
+  }
+
+  /* progress-bar-empty (black)*/
+  .xp-widget::before {
+    position: absolute;
+    top: 7px;
+    left: 70px;
+    content: "";
+
+    width: 170px;
+    height: 14px;
+
+    background-color: var(--color-xp-bar);
+
+    border-radius: 10px;
+  }
+
+  /* progress-bar-fill */
+  .xp-widget::after {
+    position: absolute;
+    top: 9px;
+    left: 72px;
+    content: "";
+
+    width: 80px;
+    height: 10px;
+
+    background-color: var(--color-progress-bar);
+
+    font-size: 0.7em;
+    color: var(--color-font-menu);
+    border-radius: 10px 0 0 10px;
+  }
+
+  /* add small decoration on each side of progress bar */
+  .xp-widget-deco {
+    position: relative;
+    display: inline;
+  }
+
+  .xp-widget-deco::before {
+    position: absolute;
+    left: 28px;
+    top: 9px;
+
+    width: 30px;
+
+    content: "| \00a0 •";
+
+    font-size: 0.5em;
+    color: var(--color-font-menu);
+  }
+
+  .xp-widget-deco::after {
+    position: absolute;
+    left: 255px;
+    top: 9px;
+
+    width: 30px;
+
+    content: "• \00a0 |";
+
+    font-size: 0.5em;
+    color: var(--color-font-menu);
+  }
+}
+
+/* side-menu */
+nav.side-menu {
+  width: 20vw;
+
+  ul {
+    width: 6em;
+
+    margin: 0;
+    padding: 0 1em;
+
+    list-style: none;
+
+    li {
+      padding: 0.7em 0 1.2em 1em;
+      margin: 1em 0;
+      height: 7px;
+
+      color: var(--color-font-menu);
+      font-size: 0.8em;
+      font-weight: var(--font-weight-nav);
+      text-transform: uppercase;
+    }
+
+    li.active {
+      background: var(--color-font-menu);
+      color: var(--color-background-header);
+
+      border-radius: 20px;
+    }
+  }
+}
