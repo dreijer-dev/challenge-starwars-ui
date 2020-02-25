@@ -42,7 +42,6 @@ header {
 
   height: 2em;
   padding: 1em 4em;
-  // margin-bottom: 5em;
 
   background: var(--color-background-header);
   color: var(--color-font-menu);
@@ -519,6 +518,7 @@ footer {
   .footer-action {
     display: inline;
     margin-left: 3em;
+
     .key {
       display: inline;
       background: var(--color-font-menu);
