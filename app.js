@@ -10,3 +10,5 @@ toggleOn.addEventListener("click", function() {
   toggleOn.classList.toggle("toggle-off");
   toggleOn.classList.toggle("toggle-on");
 });
+
+console.log("test");
