@@ -155,7 +155,6 @@ header .progress-bar-deco:after {
   display: grid;
   grid-template-columns: minmax(250px, 20%) minmax(800px, 1fr);
   grid-template-areas: "menu main";
-  mix-blend-mode: hard-light;
   padding: 0 15em 0 1.8em;
 }
 .left-main-container:after {
