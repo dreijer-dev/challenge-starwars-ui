@@ -356,6 +356,12 @@ main {
           /* this is needed to ensure there's a min-width on the selector-styled settings */
           display: inline-block;
           min-width: 100px;
+
+          //make text unselectable
+          -webkit-user-select: none; /* Chrome all / Safari all */
+          -moz-user-select: none; /* Firefox all */
+          -ms-user-select: none; /* IE 10+ */
+          user-select: none;
         }
 
         &.active {
@@ -411,6 +417,22 @@ main {
         border-radius: 50%;
       }
     }
+
+    &:first-of-type {
+      // make difficulty selector same width all the time
+      .setting-value {
+        &.selector {
+          min-width: 300px;
+          max-width: 310px;
+
+          .value-text {
+            /* this is needed to ensure there's a min-width on the selector-styled settings */
+            display: inline-block;
+            min-width: 190px;
+          }
+        }
+      }
+    }
   }
 
   .setting-information {
@@ -447,8 +469,7 @@ main {
           position: relative;
           color: var(--color-font-highlighted);
 
-          &::before {
-            /* progress-bar-empty (black)*/
+          .difficulty-progress-bar-empty {
             position: absolute;
             top: -5px;
             right: 0px;
@@ -462,7 +483,7 @@ main {
             border-radius: 10px;
           }
 
-          &::after {
+          .difficulty-progress-bar-fill {
             /* progress-bar-fill */
             position: absolute;
             top: -3px;
@@ -477,21 +498,24 @@ main {
             font-size: 0.7em;
             color: var(--color-font-menu);
             border-radius: 10px 0 0 10px;
+
+            transition: width 0.3s ease-in-out;
           }
         }
       }
 
       /* choose length of each difficulty bar */
-      .single-difficulty:nth-child(1) .difficulty-progress-bar::after {
+      .single-difficulty:nth-child(1) .difficulty-progress-bar-fill {
         width: 20px;
+        border-radius: 10px;
       }
 
-      .single-difficulty:nth-child(2) .difficulty-progress-bar::after {
+      .single-difficulty:nth-child(2) .difficulty-progress-bar-fill {
         width: 166px;
         border-radius: 10px;
       }
 
-      .single-difficulty:nth-child(3) .difficulty-progress-bar::after {
+      .single-difficulty:nth-child(3) .difficulty-progress-bar-fill {
         width: 166px;
         border-radius: 10px;
       }
