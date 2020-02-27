@@ -24,7 +24,8 @@ toggleOn.addEventListener("click", function() {
   toggleOn.classList.toggle("toggle-on");
 });
 
-// difficulty selector
+// DIFFICULTY SELECTOR
+// array for each difficulty
 let difficulty = [
   "Story Mode",
   "Jedi Knight",
@@ -32,23 +33,23 @@ let difficulty = [
   "Jedi Grand Master"
 ];
 
-let index = difficulty.indexOf(difficultySelector.innerHTML) + 1;
-
+// change difficulty up
 function changeDifficultyUp() {
-  if (index != 4) {
-    difficultySelector.innerHTML = difficulty[index++];
+  if (difficulty.indexOf(difficultySelector.innerHTML) != 3) {
+    difficultySelector.innerHTML =
+      difficulty[difficulty.indexOf(difficultySelector.innerHTML) + 1];
   } else {
     difficultySelector.innerHTML = difficulty[0];
-    index = 1;
   }
 }
 
+// change difficulty down
 function changeDifficultyDown() {
-  if (index != 1) {
-    difficultySelector.innerHTML = difficulty[index--];
+  if (difficulty.indexOf(difficultySelector.innerHTML) != 0) {
+    difficultySelector.innerHTML =
+      difficulty[difficulty.indexOf(difficultySelector.innerHTML) - 1];
   } else {
     difficultySelector.innerHTML = difficulty[3];
-    index = 4;
   }
 }
 
@@ -56,6 +57,18 @@ difficultyArrowRight.addEventListener("click", function() {
   changeDifficultyUp();
 });
 
+window.addEventListener("keydown", function(e) {
+  if (e.key == "ArrowRight") {
+    changeDifficultyUp();
+  }
+});
+
 difficultyArrowLeft.addEventListener("click", function() {
   changeDifficultyDown();
+});
+
+window.addEventListener("keydown", function(e) {
+  if (e.key == "ArrowLeft") {
+    changeDifficultyDown();
+  }
 });
