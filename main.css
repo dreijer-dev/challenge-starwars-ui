@@ -293,6 +293,13 @@ main .single-setting .setting-value.selector .value-text {
   /* this is needed to ensure there's a min-width on the selector-styled settings */
   display: inline-block;
   min-width: 100px;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
 }
 main .single-setting .setting-value.selector.active {
   /* use this class for active menu option */
@@ -337,6 +344,15 @@ main .single-setting .toggle-on:after {
   height: 28px;
   border-radius: 50%;
 }
+main .single-setting:first-of-type .setting-value.selector {
+  min-width: 300px;
+  max-width: 310px;
+}
+main .single-setting:first-of-type .setting-value.selector .value-text {
+  /* this is needed to ensure there's a min-width on the selector-styled settings */
+  display: inline-block;
+  min-width: 190px;
+}
 main .setting-information {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -370,8 +386,7 @@ main .setting-information .setting-information-difficulty .single-difficulty .di
   position: relative;
   color: var(--color-font-highlighted);
 }
-main .setting-information .setting-information-difficulty .single-difficulty .difficulty-progress-bar::before {
-  /* progress-bar-empty (black)*/
+main .setting-information .setting-information-difficulty .single-difficulty .difficulty-progress-bar .difficulty-progress-bar-empty {
   position: absolute;
   top: -5px;
   right: 0px;
@@ -381,7 +396,7 @@ main .setting-information .setting-information-difficulty .single-difficulty .di
   background-color: var(--color-xp-bar);
   border-radius: 10px;
 }
-main .setting-information .setting-information-difficulty .single-difficulty .difficulty-progress-bar::after {
+main .setting-information .setting-information-difficulty .single-difficulty .difficulty-progress-bar .difficulty-progress-bar-fill {
   /* progress-bar-fill */
   position: absolute;
   top: -3px;
@@ -393,15 +408,17 @@ main .setting-information .setting-information-difficulty .single-difficulty .di
   font-size: 0.7em;
   color: var(--color-font-menu);
   border-radius: 10px 0 0 10px;
+  transition: width 0.3s ease-in-out;
 }
-main .setting-information .setting-information-difficulty .single-difficulty:nth-child(1) .difficulty-progress-bar::after {
+main .setting-information .setting-information-difficulty .single-difficulty:nth-child(1) .difficulty-progress-bar-fill {
   width: 20px;
+  border-radius: 10px;
 }
-main .setting-information .setting-information-difficulty .single-difficulty:nth-child(2) .difficulty-progress-bar::after {
+main .setting-information .setting-information-difficulty .single-difficulty:nth-child(2) .difficulty-progress-bar-fill {
   width: 166px;
   border-radius: 10px;
 }
-main .setting-information .setting-information-difficulty .single-difficulty:nth-child(3) .difficulty-progress-bar::after {
+main .setting-information .setting-information-difficulty .single-difficulty:nth-child(3) .difficulty-progress-bar-fill {
   width: 166px;
   border-radius: 10px;
 }
